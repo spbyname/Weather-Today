@@ -1,0 +1,108 @@
+
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.weatherApp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(162, 243, 243);
+    border-radius: 18px;
+    
+}
+
+/*search box */
+.search{
+    margin: 20px 10px 20px 10px;
+}
+.search input{
+    border-radius: 18px;
+    border: 0px;
+    height: 30px;
+    width: 220px;
+    padding-left: 10px;
+    
+}
+
+.search button{
+    border-radius: 18px;
+    border: 0px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+}
+
+/* mid_portion */
+.weather{
+    
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#tempBox{
+    margin-bottom: 0px;
+}
+#cityBox{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#tempIcon{
+    font-size: 80px;
+    margin-top: 0px;
+}
+
+/* foot_panel */
+.footPanel{
+    width: 220px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 18px;
+}
+
+.footer1, .footer2{
+    width: 90px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.footer1 h2, .footer2 h2{
+    margin-bottom: 2px;
+}
+.footer1 p, .footer2 p{
+    margin-top: 2px;
+}
+.footer1 span, .footer2 span{
+    padding-left: 5px;
+    margin-left: 5px;
+}
+
+.footer2{
+    margin-left: 35px;
+}
+
+#windSpeed{
+    width: 110px;
+}
+
+#infoBox{
+    display: none;
+}
+
+#error{
+    color: red;
+    display: none;
+}
