@@ -1,108 +1,239 @@
 
-
-body{
+/* --- Global Styles --- */
+body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-}
-.weatherApp{
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: rgb(162, 243, 243);
-    border-radius: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
     
+    /* --- Animated Background Gradient --- */
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ffd1ff);
+    background-size: 400% 400%; /* Make the gradient much larger than the viewport */
+    animation: gradient-animation 15s ease infinite; /* Animate the background position */
 }
 
-/*search box */
-.search{
-    margin: 20px 10px 20px 10px;
-}
-.search input{
-    border-radius: 18px;
-    border: 0px;
-    height: 30px;
-    width: 220px;
-    padding-left: 10px;
-    
+/* Define the keyframes for the background animation */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-.search button{
-    border-radius: 18px;
-    border: 0px;
-    height: 30px;
-    width: 30px;
+/* --- Welcome Box --- */
+.welcome-box {
     text-align: center;
+    padding: 15px 25px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+
+    background: #00edbe;
+background: linear-gradient(90deg, rgba(0, 237, 190, 1) 0%, rgba(244, 158, 247, 1) 42%, rgba(233, 240, 105, 1) 85%);
 }
 
-/* mid_portion */
-.weather{
-    
-    width: 280px;
+.welcome-box p {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+    animation: textColorAnimation 5s infinite;
+}
+
+/* Define the keyframe animation for the text color */
+@keyframes textColorAnimation {
+    0% { color: #2d3e50; } /* Dark navy */
+    25% { color: #5c3566; } /* Deep purple */
+    50% { color: #1e8449; } /* Forest green */
+    75% { color: #34495e; } /* Dark blue-gray */
+    100% { color: #2d3e50; }
+}
+
+/* --- Main App Container --- */
+.weatherApp {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 350px;
+    width: 90%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.weatherApp:hover {
+    transform: translateY(-5px);
+}
+
+/* --- Search Bar --- */
+.search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search input {
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    height: 45px;
+    width: 200px;
+    padding: 0 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.search input::placeholder {
+    color: #888;
+}
+
+.search input:focus {
+    box-shadow: 0 0 0 3px #a0c4ff;
+    background-color: #fff;
+}
+
+.search button {
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    background-color: #a0c4ff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search button:hover {
+    background-color: #87ceeb;
+    transform: scale(1.05);
+}
+
+.search button:active {
+    transform: scale(0.95);
+}
+
+/* --- Error Message --- */
+#error {
+    color: #d9534f;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 10px 0;
+    animation: fadeIn 0.5s forwards;
+    display: none;
+}
+
+/* --- Weather Info Box --- */
+#infoBox {
+    width: 100%;
+    animation: fadeIn 0.5s forwards;
+    display: none;
+}
+
+.weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#tempIcon {
+    font-size: 100px;
+    color: #4a90e2;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-#tempBox{
-    margin-bottom: 0px;
-}
-#cityBox{
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-#tempIcon{
-    font-size: 80px;
-    margin-top: 0px;
+#tempBox {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
 }
 
-/* foot_panel */
-.footPanel{
-    width: 220px;
+#cityBox {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 5px 0 20px;
+}
+
+/* --- Footer Panel --- */
+.footPanel {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.footer1, .footer2 {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    margin-left: 18px;
+    gap: 10px;
+    width: 50%;
+    justify-content: center;
+    padding: 0 10px;
 }
 
-.footer1, .footer2{
-    width: 90px;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
+.footer1 i, .footer2 i {
+    font-size: 2.2rem;
+    color: #6c757d;
 }
 
-.footer1 h2, .footer2 h2{
-    margin-bottom: 2px;
-}
-.footer1 p, .footer2 p{
-    margin-top: 2px;
-}
-.footer1 span, .footer2 span{
-    padding-left: 5px;
-    margin-left: 5px;
+.footer1 span, .footer2 span {
+    text-align: left;
 }
 
-.footer2{
-    margin-left: 35px;
+.footer1 h2, .footer2 h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0;
 }
 
-#windSpeed{
-    width: 110px;
+.footer1 p, .footer2 p {
+    margin-top: 0;
+    font-size: 0.9rem;
+    color: #6c757d;
 }
 
-#infoBox{
-    display: none;
-}
-
-#error{
-    color: red;
-    display: none;
+/* --- Animations --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
